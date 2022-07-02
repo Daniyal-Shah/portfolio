@@ -1,9 +1,9 @@
-import React, {useState, useEffect} from 'react'
-import {motion} from 'framer-motion';
-import {AppWrap, MotionWrap} from '../../wrapper';
-import ReactTooltip from 'react-tooltip'
-import {urlFor, client} from '../../client';
-import './Skills.scss'
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { AppWrap, MotionWrap } from "../../wrapper";
+import ReactTooltip from "react-tooltip";
+import { urlFor, client } from "../../client";
+import "./Skills.scss";
 
 const Skills = () => {
   const [experiences, setExperiences] = useState([]);
@@ -18,6 +18,8 @@ const Skills = () => {
     });
 
     client.fetch(skillsQuery).then((data) => {
+      console.log("Fetching skills----------------------------------------");
+      console.log(data);
       setSkills(data);
     });
   }, []);
@@ -47,10 +49,7 @@ const Skills = () => {
         </motion.div>
         <div className="app__skills-exp">
           {experiences.map((experience) => (
-            <motion.div
-              className="app__skills-exp-item"
-              key={experience.year}
-            >
+            <motion.div className="app__skills-exp-item" key={experience.year}>
               <div className="app__skills-exp-year">
                 <p className="bold-text">{experience.year}</p>
               </div>
@@ -88,7 +87,7 @@ const Skills = () => {
 };
 
 export default AppWrap(
-  MotionWrap(Skills, 'app__skills'),
- 'skills',
- 'app__whitebg'
- );
+  MotionWrap(Skills, "app__skills"),
+  "skills",
+  "app__whitebg"
+);
